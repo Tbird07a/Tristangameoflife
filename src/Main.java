@@ -1,8 +1,7 @@
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) {
 
@@ -18,11 +17,11 @@ public class Main {
         int salary = 0;
         int salary_increase = 0;
         boolean alive = true;
-        double spouse_death = 0;
+
         double kid_leaving = 0;
         int kids = 0;
-        spouse wifu = null;
-        kids children = null;
+        kids children = new kids();
+        spouse wifu = new spouse();
         Scanner name1 = new Scanner(System.in);  // Create a Scanner object
         System.out.println("Enter name: ");
         String name = name1.nextLine();
@@ -85,7 +84,7 @@ public class Main {
 
             profile.profile_maker(age, chance_death, education, money, salary, job, name, house, car, spouse, kids);
             age = age + 1;
-            chance_death = chance_death + 1;
+            chance_death = chance_death + 0.75;
             money = money + salary;
             salary = salary + salary_increase;
 
@@ -137,19 +136,21 @@ public class Main {
             }
 
             if (!spouse.equals("No spouse!")) {
-                spouse_death += 3;
-                assert wifu != null;
-                boolean spouse_alive = wifu.spouse_life(spouse_death);
+
+                System.out.println(wifu.toString());
+
+
+                boolean spouse_alive = wifu.spouse_life();
                 if (!spouse_alive) {
                     spouse = "No spouse!";
-                    spouse_death = 0;
+
                 }
             }
 
             if (kids > 0) {
                 int childcare_cost = kids * 20000;
                 money -= childcare_cost;
-                assert children != null;
+
                 kids = children.kid_life(kid_leaving, kids);
                 kid_leaving += 3;
             }
@@ -181,4 +182,3 @@ public class Main {
 
     }
 }}
-
