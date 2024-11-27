@@ -131,7 +131,7 @@ public class Profile
         String spouse3 = "Meowlicious";
         String spouse4 = "Kit Connor";
         Random random = new Random();
-        int random_number = random.nextInt(0,3);
+        int random_number = random.nextInt(0,4);
         if (random_number == 0) {
             return spouse1;
         }
@@ -169,5 +169,3 @@ public class Profile
 
 
     }
-
-
